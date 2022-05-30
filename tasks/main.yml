@@ -33,6 +33,6 @@
     name: "{{ nessus_agent_service_name }}"
 
 - name: Link Nessus Agent to Nessus Manager
-  command: "{{ nessus_agent_path }} agent link --host={{ nessus_agent_host }} --port={{ nessus_agent_port }} --key={{ nessus_agent_key }} --groups={{ nessus_agent_group }}"
+  command: "{{ nessus_agent_path }} agent link --host={{ nessus_agent_host }} --port={{ nessus_agent_port }} --key={{ nessus_agent_key }} --groups={{ nessus_agent_group }} --proxy-host={{ nessus_agent_proxy_address }} --proxy-port={{ nessus_agent_proxy_port }}  "
   become: yes
   when: check_result.stdout is search('Not linked to') and nessus_agent_key | length > 0
